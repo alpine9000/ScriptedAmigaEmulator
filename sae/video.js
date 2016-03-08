@@ -234,7 +234,18 @@ function Vide0() {
 			open = false;
 		}
 	};
-	
+
+
+	this.screenshot = function() {
+	    var canvas = document.getElementsByTagName("canvas")[0];
+	    var image = canvas.toDataURL();
+	    var aLink = document.createElement('a');
+	    var evt = document.createEvent("HTMLEvents");
+	    evt.initEvent("click");
+	    aLink.download = 'screenshot.png';
+	    aLink.href = image;
+	    aLink.dispatchEvent(evt);
+	}
 	/*---------------------------------*/
 
 	/*this.hideCursor = function (hide) {

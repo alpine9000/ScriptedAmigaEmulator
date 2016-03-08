@@ -170,6 +170,10 @@ function Amiga() {
 			this.disk.eject(unit);
 	};
 
+	this.screenshot = function() {
+	      this.video.screenshot();
+	}
+
 	/*---------------------------------*/
 	/* mainloop */	
 	
@@ -406,6 +410,10 @@ function SAE(x) {
 			case 'getConfig':
 				BUG.info('API.getConfig()');
 				return AMIGA.config;
+    		        case 'screenshot':
+			        BUG.info('API.screenshot()');
+                                AMIGA.screenshot();
+                                break;
 			/*case 'setConfig':
 				BUG.info('API.setConfig() size '+x.data.ext.size);
 				AMIGA.config = x.data;
