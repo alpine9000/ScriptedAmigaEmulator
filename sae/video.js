@@ -30,7 +30,8 @@ function Vide0() {
 	const glParams = {
 		alpha: false,
 		stencil: false,
-		antialias: false
+		antialias: false,
+		preserveDrawingBuffer : true
 	};
 	
 	this.available = 0;
