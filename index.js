@@ -988,7 +988,8 @@ function init() {
 	//console.log(info);	
 	//console.log(config);	
 	
-	setSimpleConfig();
+	//setSimpleConfig();
+	romAROS();
 
 	if (window.location.hash.length > 1) {
 		var start = false;
