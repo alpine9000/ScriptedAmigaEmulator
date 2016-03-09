@@ -15,6 +15,8 @@ const URL_TEAM_HOI = '<a href="javascript:openNewTab(\'http://www.sevensheaven.n
 const URL_RETROGURU = '<a href="javascript:openNewTab(\'http://www.retroguru.com\')">retroguru</a>';
 const URL_LOEWENSTEIN = '<a href="javascript:openNewTab(\'http://www.richard-loewenstein.de\')">Richard Löwenstein</a>';
 
+var amiga_examples = undefined;
+
 const db = [
 	/* name company year [disks] [change, turbo] [en,f1,f2,map] load [keys] immediate */			
 	[
@@ -173,6 +175,11 @@ var dbGrp = 0;
 var dbNum = 0;
 
 var _extraPath = "";
+
+if (window.location.hostname.indexOf("localhost") == 0) {
+    _extraPath = ':8080';
+}
+
 if (window.location.hostname.indexOf("alpine9000.github.io") == 0) {
      _extraPath = '/ScriptedAmigaEmulator';
 }
@@ -507,6 +514,14 @@ function getSimpleFloppy() {
 		config.floppy.drive[3].data = null;
 		//config.floppy.speed = SAEV_Config_Floppy_Speed_Original;
 		config.floppy.speed = SAEV_Config_Floppy_Speed_Turbo;
+
+		if (amiga_examples !== undefined) {
+		    var url = '/' + amiga_examples;
+		    if ((config.floppy.drive[0].data = cache.loadDisk(url)) !== null) {
+		        config.floppy.drive[0].type = SAEV_Config_Floppy_Type_35_DD;
+		        config.floppy.drive[0].name = amiga_examples;
+		    }
+		}
 		return true;
 	}
 
@@ -1006,7 +1021,9 @@ function init() {
 		var start = false;
 		var name = urldecode(window.location.hash.substr(1));
 		if (name.indexOf("amiga_examples/") == 0) {
-			console.log("alternate loading method will go here");
+		    console.log("alternate loading method will go here");
+		    amiga_examples = name;
+		    simpleStart();
 		} else {
 			while (true) {
 				var tmp = name.replace('_', ' ');
@@ -1045,7 +1062,9 @@ function start() {
 	styleDisplayBlock('base', 0);
 	styleDisplayBlock('emul', 1);
 	
-	if (mode == 0) {	
+	if (amiga_examples !== undefined) {
+
+	} else if (mode == 0) {	
 		var item = dbNum > 0 ? db[dbGrp - 1][dbNum - 1] : null;
 		if (item) {
 			var name = item[0];
@@ -1076,7 +1095,7 @@ function start() {
 
 function simpleStart2() {
 	if (getSimpleConfig())
-		start();	
+	    start();
 	else {
 		disabled('cfg_simple_start', 0);				
 		document.getElementById('cfg_simple_start').innerHTML = 'Play';
