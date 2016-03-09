@@ -172,22 +172,18 @@ const db = [
 var dbGrp = 0;
 var dbNum = 0;
 
-const aros_rom_file = 'aros-amiga-m68k-rom.bin';		
+var _extraPath = "";
 if (window.location.hostname.indexOf("alpine9000.github.io") == 0) {
-    const aros_rom_url = 'http://'+window.location.hostname+'/ScriptedAmigaEmulator/db/'+aros_rom_file;
-} else {
-    const aros_rom_url = 'http://'+window.location.hostname+'/db/'+aros_rom_file;
+     _extraPath = '/ScriptedAmigaEmulator';
 }
 
+const aros_rom_file = 'aros-amiga-m68k-rom.bin';		
+const aros_rom_url = 'http://'+window.location.hostname+_extraPath+'/db/'+aros_rom_file;
 const aros_rom_size = 0x80000;
 const aros_rom_crc = 0xbe091f38; //0x48dfadd; //0xea48b4d1
-
 const aros_ext_file = 'aros-amiga-m68k-ext.bin';
-if (window.location.hostname.indexOf("alpine9000.github.io") == 0) {
-    const aros_ext_url = 'http://'+window.location.hostname+'/ScriptedAmigaEmulator/db/'+aros_ext_fil;e
-} else {
-    const aros_ext_url = 'http://'+window.location.hostname+'/db/'+aros_ext_file;
-}
+const aros_ext_url = 'http://'+window.location.hostname+_extraPath+'/db/'+aros_ext_file;
+
 const aros_ext_size = 0x80000;
 const aros_ext_crc = 0x3f3fdce0; //0xaaf211d6; //0x60871435
 
