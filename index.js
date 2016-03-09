@@ -516,7 +516,7 @@ function getSimpleFloppy() {
 		config.floppy.speed = SAEV_Config_Floppy_Speed_Turbo;
 
 		if (amiga_examples !== undefined) {
-		    var url = '/' + amiga_examples;
+		    var url = '/ScriptedAmigaEmulator/' + amiga_examples;
 		    if ((config.floppy.drive[0].data = cache.loadDisk(url)) !== null) {
 		        config.floppy.drive[0].type = SAEV_Config_Floppy_Type_35_DD;
 		        config.floppy.drive[0].name = amiga_examples;
