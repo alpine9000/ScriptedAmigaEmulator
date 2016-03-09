@@ -500,7 +500,8 @@ function getSimpleFloppy() {
 		config.floppy.drive[3].type = SAEV_Config_Floppy_Type_None;
 		config.floppy.drive[3].name = null;						
 		config.floppy.drive[3].data = null;
-		config.floppy.speed = SAEV_Config_Floppy_Speed_Original;
+		//config.floppy.speed = SAEV_Config_Floppy_Speed_Original;
+		config.floppy.speed = SAEV_Config_Floppy_Speed_Turbo;
 		return true;
 	}
 
