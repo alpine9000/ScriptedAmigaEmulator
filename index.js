@@ -994,9 +994,11 @@ function init() {
 	//console.log(info);	
 	//console.log(config);	
 	
-	//setSimpleConfig();
+	
 	if (window.location.hash.length <= 1) {
 		switchCfg(1)
+	} else {
+		setSimpleConfig();
 	}
 	romAROS();
 
