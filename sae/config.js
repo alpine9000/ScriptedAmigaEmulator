@@ -162,8 +162,8 @@ function Config() {
 		c.floppy.drive[3].type = SAEV_Config_Floppy_Type_None;
 		c.floppy.drive[3].name = null;						
 		c.floppy.drive[3].data = null;						
-		c.floppy.speed = SAEV_Config_Floppy_Speed_Original;						
-
+		//c.floppy.speed = SAEV_Config_Floppy_Speed_Original;		
+		c.floppy.speed = SAEV_Config_Floppy_Speed_Turbo;
 		c.video.id = 'video';
 		c.video.enabled = true;
 		c.video.scale = false;
