@@ -1001,31 +1001,35 @@ function init() {
 	if (window.location.hash.length > 1) {
 		var start = false;
 		var name = urldecode(window.location.hash.substr(1));
-		while (true) {
-			var tmp = name.replace('_', ' ');
-			if (tmp == name) break;
-			name = tmp;	
-		}					
-		for (var i = 0; i < db[0].length; i++) {
-			if (db[0][i][0] == name) {
-				document.getElementById('cfg_game')[i+1].selected = true;
-				preSelect(1);
-				start = true;
-				break;
-			}		
-		}		
-		if (!start) {
-			for (var i = 0; i < db[1].length; i++) {
-				if (db[1][i][0] == name) {
-					document.getElementById('cfg_demo')[i+1].selected = true;
-					preSelect(2);
+		if (name.indexOf("amiga_examples/") == 0) {
+			console.log("alternate loading method will go here");
+		} else {
+			while (true) {
+				var tmp = name.replace('_', ' ');
+				if (tmp == name) break;
+				name = tmp;	
+			}					
+			for (var i = 0; i < db[0].length; i++) {
+				if (db[0][i][0] == name) {
+					document.getElementById('cfg_game')[i+1].selected = true;
+					preSelect(1);
 					start = true;
 					break;
 				}		
 			}		
+			if (!start) {
+				for (var i = 0; i < db[1].length; i++) {
+					if (db[1][i][0] == name) {
+						document.getElementById('cfg_demo')[i+1].selected = true;
+						preSelect(2);
+						start = true;
+						break;
+					}		
+				}		
+			}
+			if (start)
+				simpleStart();
 		}
-		if (start)
-			simpleStart();
 	}
 }	
 
