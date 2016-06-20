@@ -353,7 +353,7 @@ function Channel(num) {
 }
 
 function Audi0() {
-	const SAMPLE_BUFFER_SIZE = 2048;
+	const SAMPLE_BUFFER_SIZE = 8192;
 	this.available = 0;
 
 	var channel = null;
