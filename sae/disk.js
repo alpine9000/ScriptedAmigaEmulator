@@ -1534,8 +1534,7 @@ function Disk() {
 						for (i = 0; i < floppy[dr].tracklen; i += 16) {
 							pos += 16;
 							pos %= floppy[dr].tracklen;
-							if (
-								] == dsksync) {
+							if (floppy[dr].bigmfmbuf[pos >> 4] == dsksync) {								
 								pos += 16;
 								pos %= floppy[dr].tracklen;
 								break;
