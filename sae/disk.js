@@ -749,8 +749,16 @@ function Drive(number) {
 		 }*/
 		for (var i = 0; i < this.num_secs; i++) {
 			var offset = this.trackdata[this.cyl * 2 + AMIGA.disk.side].offs + i * 512;
-			for (var j = 0; j < 512; j++)
+			for (var j = 0; j < 512; j++) {
 				this.diskfile[offset + j] = this.diskdata[offset + j] = this.writebuffer[i * 512 + j];
+				if (typeof(diskerrorcounter) != "undefined" && typeof(diskerrorcounterstart) != undefined) {
+					if (--diskerrorcounter == 0) {
+						this.diskfile[offset + j] = parseInt(Math.random()*255);
+						diskerrorcounter = diskerrorcounterstart;
+					}
+				} 
+				
+			}
 		}
 		return 0;
 	};
