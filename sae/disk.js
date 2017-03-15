@@ -753,7 +753,7 @@ function Drive(number) {
 				this.diskfile[offset + j] = this.diskdata[offset + j] = this.writebuffer[i * 512 + j];
 				if (typeof(diskerrorcounter) != "undefined" && typeof(diskerrorcounterstart) != undefined) {
 					if (--diskerrorcounter == 0) {
-						this.diskfile[offset + j] = parseInt(Math.random()*255);
+						this.diskfile[offset + j] = this.diskdata[offset + j] = parseInt(Math.random()*255);
 						diskerrorcounter = diskerrorcounterstart;
 					}
 				} 
