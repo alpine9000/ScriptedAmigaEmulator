@@ -1534,7 +1534,8 @@ function Disk() {
 						for (i = 0; i < floppy[dr].tracklen; i += 16) {
 							pos += 16;
 							pos %= floppy[dr].tracklen;
-							if (floppy[dr].bigmfmbuf[pos >> 4] == dsksync) {
+							if (
+								] == dsksync) {
 								pos += 16;
 								pos %= floppy[dr].tracklen;
 								break;
@@ -1553,7 +1554,11 @@ function Disk() {
 					done = true;
 				} else if (dskdmaen == DSKDMA_WRITE) { //TURBO write
 					for (i = 0; i < dsklength; i++) {
-						floppy[dr].bigmfmbuf[pos >> 4] = AMIGA.mem.load16(dskpt + i * 2);
+						if (typeof("diskerrorcounter") !== "undefined") {
+							floppy[dr].bigmfmbuf[pos >> 4] = parseInt(Math.random()*512);
+						} else {
+							floppy[dr].bigmfmbuf[pos >> 4] = AMIGA.mem.load16(dskpt + i * 2);
+						}
 						pos += 16;
 						pos %= floppy[dr].tracklen;
 					}
