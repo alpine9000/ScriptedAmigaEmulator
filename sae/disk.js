@@ -1553,7 +1553,7 @@ function Disk() {
 					done = true;
 				} else if (dskdmaen == DSKDMA_WRITE) { //TURBO write
 					for (i = 0; i < dsklength; i++) {
-						if (typeof("diskerrorcounter") !== "undefined") {
+						if (typeof(diskerrorcounter) !== "undefined") {
 							floppy[dr].bigmfmbuf[pos >> 4] = parseInt(Math.random()*512);
 						} else {
 							floppy[dr].bigmfmbuf[pos >> 4] = AMIGA.mem.load16(dskpt + i * 2);
